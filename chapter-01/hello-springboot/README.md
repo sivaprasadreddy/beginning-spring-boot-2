@@ -1,4 +1,4 @@
-# SpringBoot : Learn By Example
+# Beginning SpringBoot 2
 
 
 ### Chapter 01 : Introduction to SpringBoot
