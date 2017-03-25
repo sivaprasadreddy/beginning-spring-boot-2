@@ -8,11 +8,11 @@
 	<artifactId>chapter-02</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<description>Being productive with SpringBoot</description>
+	<name>chapter-02</name>
+	<description>Getting Started with SpringBoot</description>
 
 	<modules>
-		<module>conditional</module>
-		<module>springboot-essentials</module>
+		<module>springboot-basic</module>
 	</modules>
 	
 </project>

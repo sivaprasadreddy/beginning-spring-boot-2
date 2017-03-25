@@ -5,22 +5,13 @@
 						http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.apress</groupId>
-	<artifactId>beginning-spring-boot-2</artifactId>
+	<artifactId>chapter-03</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>beginning-spring-boot-2</name>
+	<description>Being productive with SpringBoot</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	
 	<modules>
-		<module>chapter-01</module>
-		<module>chapter-02</module>
-		<module>chapter-03</module>
-		<module>chapter-04</module>
-		<module>chapter-05</module>
-		
-    </modules>
+		<module>conditional</module>
+	</modules>
 	
 </project>
