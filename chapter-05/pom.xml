@@ -13,6 +13,7 @@
 	<modules>
 		<module>spring-jdbc-demo</module>
 		<module>springboot-jdbc-demo</module>
+		<module>springboot-flyway-demo</module>
 	</modules>
 	
 </project>

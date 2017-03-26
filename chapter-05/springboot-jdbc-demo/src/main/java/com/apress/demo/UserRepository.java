@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sivalabs.demo;
+package com.apress.demo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
