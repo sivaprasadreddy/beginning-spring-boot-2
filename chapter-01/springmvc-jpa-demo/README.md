@@ -10,3 +10,9 @@
 springmvc-jpa-demo> mvn clean package tomcat7:run
 
 Go to http://localhost:8080/springmvc-jpa-demo
+
+If you want to use gradle:
+
+springmvc-jpa-demo> gradle tomcatRunWar
+
+Go to http://localhost:8080/springmvc-jpa-demo
