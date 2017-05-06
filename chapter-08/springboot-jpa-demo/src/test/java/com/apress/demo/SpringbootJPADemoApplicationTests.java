@@ -1,5 +1,12 @@
 package com.apress.demo;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +19,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.apress.demo.User;
-import com.apress.demo.UserRepository;
-
-import java.util.List;
-import java.util.Optional;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Siva
@@ -45,15 +44,15 @@ public class SpringbootJPADemoApplicationTests
 	
 	@Test
 	public void findUserById()  {
-		Optional<User> user = userRepository.findOne(1);
-		assertNotNull(user.get());
+		User user = userRepository.getOne(1);
+		assertNotNull(user);
 	}
 	
-	@Test
+	@Test @Ignore
 	public void createUser() {
-		User user = new User(0, "Paul", "paul@gmail.com");
+		User user = new User(null, "Paul", "paul@gmail.com");
 		User savedUser = userRepository.save(user);
-		User newUser = userRepository.findOne(savedUser.getId()).get();
+		User newUser = userRepository.findById(savedUser.getId()).get();
 		assertEquals("Paul", newUser.getName());
 		assertEquals("paul@gmail.com", newUser.getEmail());
 	}
