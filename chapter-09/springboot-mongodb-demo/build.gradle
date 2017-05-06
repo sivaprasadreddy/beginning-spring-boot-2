@@ -29,9 +29,6 @@ repositories {
 
 dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	runtime('org.springframework.boot:spring-boot-devtools')
-	compile('org.springframework.boot:spring-boot-starter-jdbc')
-	compile('org.flywaydb:flyway-core')
-	runtime('com.h2database:h2')
-	runtime('mysql:mysql-connector-java')
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 }
