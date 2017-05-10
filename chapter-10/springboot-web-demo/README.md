@@ -1,0 +1,15 @@
+# Beginning SpringBoot 2
+
+
+### Chapter 10 : Web Applications with SpringBoot
+
+**springboot-web-demo**: This module is a basic SpringBoot web application.
+
+#### How to run?
+
+
+springboot-web-demo> mvn spring-boot:run
+
+
+
+Go to http://localhost:8080/
