@@ -7,9 +7,17 @@
 
 #### How to run?
 
+To use embedded tomcat servlet container:
 
 springboot-web-demo> mvn spring-boot:run
 
+To use embedded jetty servlet container:
+
+springboot-web-demo> mvn spring-boot:run -P jetty
+
+To use embedded undertow servlet container:
+
+springboot-web-demo> mvn spring-boot:run  -P undertow
 
 
 Go to http://localhost:8080/

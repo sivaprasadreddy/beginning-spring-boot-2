@@ -12,10 +12,8 @@
 
 	<modules>
 		<module>springboot-web-demo</module>
-		<!-- <module>springboot-war-demo</module>
-		<module>springboot-jetty-undertow-demo</module>
 		<module>springboot-thymeleaf-demo</module>
-		<module>springboot-web-customization-demo</module> -->
+		<module>springboot-war-demo</module>
 	</modules>
 	
 </project>

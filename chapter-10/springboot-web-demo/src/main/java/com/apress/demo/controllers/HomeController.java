@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.apress.demo;
+package com.apress.demo.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
