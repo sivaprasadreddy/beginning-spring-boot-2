@@ -10,6 +10,7 @@ import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.MessageSource;
@@ -53,6 +54,14 @@ public class WebConfig implements WebMvcConfigurer
 			}
 		};
 
+		tomcat.addConnectorCustomizers(new TomcatConnectorCustomizer() {
+			
+			@Override
+			public void customize(Connector connector) {
+				((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(-1);				
+			}
+		});
+
 		tomcat.addAdditionalTomcatConnectors(initiateHttpConnector());
 		return tomcat;
 	}
@@ -68,7 +77,7 @@ public class WebConfig implements WebMvcConfigurer
 	    //To set the maxSwallowSize property of Tomcat https://tomcat.apache.org/tomcat-8.0-doc/config/http.html
 	    //http://stackoverflow.com/questions/35748022/multipart-file-maximum-size-exception-spring-boot-embbeded-tomcat
 	    
-		((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(-1);
+		((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(11534336);
 		return connector;
 	}
 	

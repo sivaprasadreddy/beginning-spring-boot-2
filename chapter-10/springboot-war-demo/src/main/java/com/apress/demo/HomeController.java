@@ -14,13 +14,8 @@ public class HomeController
 	@RequestMapping("/")
 	public String index(Model model)
 	{
-		return "index.jsp";
-	}
-	
-	@RequestMapping("/home")
-	public String home(Model model)
-	{
+		model.addAttribute("title", "SpringBoot WAR Packaging Demo");
 		model.addAttribute("content", "SpringBoot application using JSP Views");
-		return "homepage.jsp";
+		return "index.jsp";
 	}
 }

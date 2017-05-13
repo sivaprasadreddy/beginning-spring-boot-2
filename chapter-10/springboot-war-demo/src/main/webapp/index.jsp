@@ -7,6 +7,7 @@
 <title>SpringBoot JSP</title>
 </head>
 <body>
-<a href="home">Home</a>
+<h2>${title}</h2>
+<h3><%=request.getAttribute("content") %> </h3>
 </body>
 </html>

@@ -7,6 +7,13 @@
 
 #### How to run?
 
-springboot-war-demo> mvn clean package tomcat7:run
+springboot-war-demo> mvn clean package
 
-Go to http://localhost:8080/springboot-war-demo
+Now you can deploy the generated WAR file in target directory in external tomcat server.
+You can also run war using java -jar target/springboot-war-demo-1.0-SNAPSHOT.jar
+
+You can also run using spring-boot:run maven goal.
+
+springboot-war-demo> mvn spring-boot:run
+
+Go to http://localhost:8080/

@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.apress.demo.controllers;
 
 import java.io.File;
@@ -19,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  *
  */
 @Controller
-public class FileUploadController //implements HandlerExceptionResolver
+public class FileUploadController
 {
 	private static final String UPLOADS_DIR = "D:/uploads/";
 
@@ -49,30 +47,4 @@ public class FileUploadController //implements HandlerExceptionResolver
 		return "redirect:/fileUpload";
 	}
 	
-	/*
-	@ExceptionHandler({MultipartException.class, FileSizeLimitExceededException.class, MaxUploadSizeExceededException.class})
-    public ModelAndView handleMaxUploadException(Exception e, 
-    		HttpServletRequest request, HttpServletResponse response){
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("msg", e.getMessage());
-        return new ModelAndView("fileUpload", model);
-    }
-	
-	
-	public ModelAndView resolveException(HttpServletRequest request,
-            HttpServletResponse response, Object handler, Exception exception)
-    {        
-        Map<String, Object> model = new HashMap<String, Object>();
-        if (exception instanceof MultipartException)
-        {
-            model.put("msg", "MultipartException: "+exception.getMessage());
-        } else
-        {
-            model.put("msg", "Unexpected error: " + exception.getMessage());
-        }
-        
-        return new ModelAndView("fileUpload", model);
-    }
-	 */
-
 }
