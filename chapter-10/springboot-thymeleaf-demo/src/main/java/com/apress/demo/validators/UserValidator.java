@@ -1,12 +1,15 @@
 /**
  * 
  */
-package com.apress.demo;
+package com.apress.demo.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import com.apress.demo.domain.User;
+import com.apress.demo.repositories.UserRepository;
 
 /**
  * @author Siva

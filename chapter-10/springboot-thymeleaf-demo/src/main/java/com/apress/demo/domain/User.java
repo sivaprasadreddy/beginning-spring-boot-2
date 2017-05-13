@@ -1,4 +1,4 @@
-package com.apress.demo;
+package com.apress.demo.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

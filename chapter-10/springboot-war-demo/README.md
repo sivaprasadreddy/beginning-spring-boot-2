@@ -1,7 +1,7 @@
-# SpringBoot : Learn By Example
+# Beginning SpringBoot 2
 
 
-### Chapter 11 : Web Applications with SpringBoot
+### Chapter 10 : Web Applications with SpringBoot
 
 **springboot-war-demo**: This module is a basic SpringBoot web application using WAR type packaging and using JSPs as view layer.
 

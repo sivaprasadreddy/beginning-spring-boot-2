@@ -7,6 +7,7 @@ import javax.servlet.DispatcherType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +27,8 @@ import net.bull.javamelody.SessionListener;
  *
  */
 @Configuration
-public class WebMvcConfig implements WebMvcConfigurer{
+public class WebMvcConfig implements WebMvcConfigurer
+{
 
 	@Autowired
     private MessageSource messageSource;
@@ -59,26 +61,21 @@ public class WebMvcConfig implements WebMvcConfigurer{
 		return filter;
 	}
     
-	@Bean
+	@Bean(name = "javamelodyFilter")
 	public FilterRegistrationBean<MonitoringFilter> javamelodyFilterBean() {
 
 		FilterRegistrationBean<MonitoringFilter> registration = new FilterRegistrationBean<>();
-		registration.setFilter(javamelodyFilter());
+		registration.setFilter(new MonitoringFilter());
 		registration.addUrlPatterns("/*");
-		// registration.addInitParameter("paramName", "paramValue");
 		registration.setName("javamelodyFilter");
 		registration.setAsyncSupported(true);
 		registration.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.ASYNC);
 		return registration;
 	}
 
-	@Bean(name = "javamelodyFilter")
-	public MonitoringFilter javamelodyFilter() {
-		return new MonitoringFilter();
-	}
-
 	@Bean(name = "javamelodySessionListener")
-	public SessionListener sessionListener() {
-		return new SessionListener();
+	public ServletListenerRegistrationBean<SessionListener> sessionListener() {
+		return new ServletListenerRegistrationBean<>(new SessionListener());
 	}
+	
 }

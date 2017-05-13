@@ -21,3 +21,5 @@ springboot-web-demo> mvn spring-boot:run  -P undertow
 
 
 Go to http://localhost:8080/
+
+JavaMelody Monitoring Dashboard: http://localhost:8080/monitoring 
