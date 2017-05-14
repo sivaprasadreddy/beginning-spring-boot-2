@@ -5,13 +5,10 @@
       layout:decorator="layout">
       
       <head>
-        <title>Home</title>
+        <title>File Uploading</title>
     </head>
     <body>
     	<div layout:fragment="content">
-	        <p>Welcome </p>
-	        
-	        <hr/>
 	        	<h2>File Uploading</h2>
 	        	<form action="uploadMyFile" th:action="@{/uploadMyFile}" method="post" enctype="multipart/form-data">
 				      <input type="file" name="myFile" />

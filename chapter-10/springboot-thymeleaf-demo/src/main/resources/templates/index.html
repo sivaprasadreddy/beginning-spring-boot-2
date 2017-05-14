@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout">
       
       <head>
@@ -8,8 +9,7 @@
     </head>
     <body>
     	<div layout:fragment="content">
-	        <p>Welcome </p>
-	        <p th:text="${message}">Message</p>
+	        <h3 th:text="${message}">Message</h3>
 	        <p><a href="registration">Registration</a></p>
 	        <p><a href="fileUpload">FileUpload</a></p>
 	        
