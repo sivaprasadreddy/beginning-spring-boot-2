@@ -1,7 +1,7 @@
-# SpringBoot : Learn By Example
+# Beginning SpringBoot 2
 
 
-### Chapter 12 : Building REST API using SpringBoot
+### Chapter 11 : Building REST API using SpringBoot
 
 **springboot-angularjs-demo**: This module demonstrates how to consume RESTful WebServices built using Spring MVC from AngularJS application.
 

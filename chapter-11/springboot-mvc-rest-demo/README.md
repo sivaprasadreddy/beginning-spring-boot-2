@@ -1,7 +1,7 @@
-# SpringBoot : Learn By Example
+# Beginning SpringBoot 2
 
 
-### Chapter 12 : Building REST API using SpringBoot
+### Chapter 11 : Building REST API using SpringBoot
 
 **springboot-mvc-rest-demo**: This module demonstrates how to build RESTful WebServices using SpringMVC.
 

@@ -45,7 +45,6 @@ public class SpringbootMvcRestDemoApplicationTest
 		ResponseEntity<Post[]> responseEntity = restTemplate.getForEntity(getRootUrl()+"/posts", Post[].class); 
         List<Post> posts = Arrays.asList(responseEntity.getBody());
         assertNotNull(posts);
-        System.out.println(posts);
 	}
 	
 	@Test
@@ -65,9 +64,7 @@ public class SpringbootMvcRestDemoApplicationTest
 		
 		ResponseEntity<Post> postResponse = restTemplate.postForEntity(getRootUrl()+"/posts", post, Post.class); 
         assertNotNull(postResponse);
-        assertNotNull(postResponse.getBody());
-        System.err.println(postResponse.getBody());
-	}
+        assertNotNull(postResponse.getBody());	}
 	
 	@Test
 	public void testUpdatePost() 
@@ -81,7 +78,6 @@ public class SpringbootMvcRestDemoApplicationTest
 		
 		Post updatedPost = restTemplate.getForObject(getRootUrl()+"/posts/"+id, Post.class); 
         assertNotNull(updatedPost);
-        System.err.println(updatedPost);
 	}
 	
 	@Test

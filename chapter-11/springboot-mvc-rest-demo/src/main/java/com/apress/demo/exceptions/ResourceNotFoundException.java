@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.apress.demo.controllers;
+package com.apress.demo.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
