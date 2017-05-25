@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.apress.demo;
+package com.apress.demo.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
