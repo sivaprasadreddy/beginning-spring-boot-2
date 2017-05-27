@@ -22,10 +22,13 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
         config.exposeIdsFor(User.class, Post.class, Comment.class);
 
-        config.getCorsRegistry().addMapping("/**")
-                //.allowedOrigins("http://localhost:3000")
-                .allowedMethods("HEAD", "OPTIONS", "GET", "POST", "PUT", "DELETE")
-                .allowCredentials(false).maxAge(3600);
+        config.getCorsRegistry()
+        		.addMapping("/**")
+	                //.allowedOrigins("http://localhost:3000")
+	        		.allowedOrigins("*")
+	                .allowedMethods("HEAD", "OPTIONS", "GET", "POST", "PUT", "DELETE")
+	                .allowCredentials(false)
+	                .maxAge(3600);
     }
 }
 

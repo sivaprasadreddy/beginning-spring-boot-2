@@ -29,25 +29,14 @@ public class WebConfig implements WebMvcConfigurer
         return factory;
     }
 	
-    //https://spring.io/blog/2015/06/08/cors-support-in-spring-framework
-    //https://spring.io/understanding/CORS
-    //https://spring.io/guides/gs/rest-service-cors/
-    
     @Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry
 			.addMapping("/**")
 			.allowedMethods("GET","POST","PUT","DELETE","HEAD","OPTIONS")
-			;
+			//.allowedHeaders("header1", "header2", "header3")
+			//.exposedHeaders("header1", "header2")
+			.allowCredentials(true)
+			.maxAge(3600);
 	}
-    
-    /*@Override
-	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/api/**")
-			.allowedOrigins("http://domain2.com")
-			.allowedMethods("PUT", "DELETE")
-			.allowedHeaders("header1", "header2", "header3")
-			.exposedHeaders("header1", "header2")
-			.allowCredentials(false).maxAge(3600);
-	}*/
 }
