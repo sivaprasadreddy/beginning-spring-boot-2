@@ -13,7 +13,6 @@
 	<modules>
 		<module>springboot-mvc-rest-demo</module>
 		<module>springboot-data-rest-demo</module>
-		<module>springboot-angularjs-demo</module>
 	</modules>
 	
 </project>
