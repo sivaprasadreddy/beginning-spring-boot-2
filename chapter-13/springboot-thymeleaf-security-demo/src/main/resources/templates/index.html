@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       layout:decorator="layout">
       
       <head>
@@ -9,8 +11,8 @@
     <body>
     	<div layout:fragment="content">
     	
-	        <p><a th:href="@{/home}">User Home</a></p>
 		     <p sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></p>
+	         <p><a th:href="@{/home}">User Home</a></p>
 		     <p sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin/home}">Admin Home</a></p>
 		     <p sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></p>
     	</div>
