@@ -46,7 +46,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     {
         auth
             .userDetailsService(customUserDetailsService)
-            .passwordEncoder(passwordEncoder());
+            .passwordEncoder(passwordEncoder())
+            ;
     }
     
     @Override
@@ -57,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	        .authorizeRequests()
 		        .antMatchers("/","/login","/contact").permitAll()
 		        .antMatchers("/api/admin/**").hasRole("ADMIN")
-		        .antMatchers("/admin/**").hasRole("ADMIN")
+		        .antMatchers("/api/**").authenticated()
 		        .and()
         
             .exceptionHandling()

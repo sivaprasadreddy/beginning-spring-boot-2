@@ -4,9 +4,6 @@
 package com.apress.demo.security;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.apress.demo.entities.Role;
 import com.apress.demo.entities.User;
 import com.apress.demo.repositories.UserRepository;
 
@@ -34,9 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService
 	public UserDetails loadUserByUsername(String email)
 			throws UsernameNotFoundException
 	{
-		User user = repo.findByEmail(email);
-		System.out.println("Email: "+email+", User: "+user);
-		if(user == null) throw new UsernameNotFoundException("User not found");
+		User user = repo.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found"));
 		return new org.springframework.security.core.userdetails.User(
                 user.getEmail(), 
                 user.getPassword(),
@@ -44,19 +38,14 @@ public class CustomUserDetailsService implements UserDetailsService
                 );
     }
 
-    
-    private Collection<? extends GrantedAuthority> getAuthorities(User user)
+	private static Collection<? extends GrantedAuthority> getAuthorities(User user)
     {
-        Set<String> userRoles = new HashSet<>();
-        List<Role> roles = user.getRoles();
-        
-        for (Role role : roles)
-        {
-            userRoles.add(role.getName());
-        }
-        String[] roleNames = new String[userRoles.size()];
-        Collection<GrantedAuthority> authorities = 
-            AuthorityUtils.createAuthorityList(userRoles.toArray(roleNames));
+        String[] userRoles = user.getRoles()
+                                    .stream()
+                                    .map((role) -> role.getName())
+                                    .toArray(String[]::new);
+        Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
         return authorities;
     }
+
 }

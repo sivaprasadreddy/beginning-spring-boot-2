@@ -6,13 +6,10 @@ package com.apress.demo.rest.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 /**
  * @author Siva
  *
  */
-@XmlRootElement
 public class AuthenticatedUser {
 
 	private String email;

@@ -3,6 +3,8 @@
  */
 package com.apress.demo.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +22,7 @@ public class UserService {
 	
 	@Autowired UserRepository userRepository;
 	
-	public User login(String email, String password)
+	public Optional<User> login(String email, String password)
 	{
 		return userRepository.findByEmailAndPassword(email, password);
 	}

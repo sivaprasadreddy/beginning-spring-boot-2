@@ -3,6 +3,8 @@
  */
 package com.apress.demo.config;
 
+import javax.sql.DataSource;
+
 /**
  * @author Siva
  *
@@ -18,6 +20,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -27,6 +31,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UserDetailsService customUserDetailsService;
+	
+	@Autowired
+	private DataSource dataSource;
 	
 	@Bean
     public PasswordEncoder passwordEncoder() {
@@ -42,8 +49,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-        	//.csrf().disable()
+        http        	
+        	.headers()
+        		.frameOptions().sameOrigin()
+        		.and()
             .authorizeRequests()
             	.antMatchers("/resources/**", "/webjars/**","/assets/**").permitAll()
                 .antMatchers("/").permitAll()
@@ -59,14 +68,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .logout()
             	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
             	.logoutSuccessUrl("/login?logout")
-            	.deleteCookies("remember-me")
+            	.deleteCookies("my-remember-me-cookie")
                 .permitAll()
                 .and()
              .rememberMe()
+             	//.key("my-secure-key")
+             	.rememberMeCookieName("my-remember-me-cookie")
+             	.tokenRepository(persistentTokenRepository())
+             	.tokenValiditySeconds(24 * 60 * 60)
              	.and()
             .exceptionHandling()
             	//.accessDeniedPage("/403")
              	;
     }
-
+    
+    PersistentTokenRepository persistentTokenRepository(){
+    	JdbcTokenRepositoryImpl tokenRepositoryImpl = new JdbcTokenRepositoryImpl();
+    	tokenRepositoryImpl.setDataSource(dataSource);
+    	return tokenRepositoryImpl;
+    }
 }

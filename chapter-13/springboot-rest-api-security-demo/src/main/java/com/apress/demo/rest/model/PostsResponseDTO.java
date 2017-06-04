@@ -27,6 +27,8 @@ public class PostsResponseDTO implements Serializable
 	private boolean hasNextPage;
 	private boolean hasPrevPage;
 	
+	public PostsResponseDTO() {
+	}
 	public PostsResponseDTO(List<Post> posts, long totalRecords, int currentPage, int pageSize, boolean hasNextPage, boolean hasPrevPage) {
 		this.posts = posts;
 		this.totalRecords = totalRecords;

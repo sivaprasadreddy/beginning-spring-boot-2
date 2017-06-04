@@ -3,14 +3,10 @@
  */
 package com.apress.demo.rest.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-
 /**
  * @author Siva
  *
  */
-@XmlRootElement
 public class PostsRequestDTO
 {
 	private int pageNo;

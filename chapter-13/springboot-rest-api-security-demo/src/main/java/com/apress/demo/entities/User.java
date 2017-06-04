@@ -18,7 +18,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -36,7 +35,6 @@ public class User
 	private String name;
 	@Column(nullable=false, unique=true)
 	@NotEmpty
-	@Email(message="{errors.invalid_email}")
 	private String email;
 	@Column(nullable=false)
 	@NotEmpty

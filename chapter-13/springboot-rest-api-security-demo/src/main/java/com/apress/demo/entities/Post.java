@@ -22,8 +22,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "POSTS")
-public class Post implements Serializable
-{
+public class Post implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,17 +31,18 @@ public class Post implements Serializable
 	@Column(name = "title", nullable = false, length = 150)
 	private String title;
 	@Lob
-	@Column(name = "content", nullable = false, columnDefinition="TEXT")
+	@Column(name = "content", nullable = false, columnDefinition = "TEXT")
 	private String content;
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="created_on")
+	@Column(name = "created_on")
 	private Date createdOn = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="updated_on")
+	@Column(name = "updated_on")
 	private Date updatedOn;
-	
+
 	public Post() {
 	}
+
 	public Post(Integer postId) {
 		this.id = postId;
 	}
@@ -55,36 +55,29 @@ public class Post implements Serializable
 		this.id = id;
 	}
 
-
 	public String getTitle() {
 		return title;
 	}
-
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-
 	public String getContent() {
 		return content;
 	}
-
 
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-
 	public Date getCreatedOn() {
 		return createdOn;
 	}
 
-
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
-
 
 	public Date getUpdatedOn() {
 		return updatedOn;
@@ -93,11 +86,4 @@ public class Post implements Serializable
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
 	}
-	public String getContentPreview()
-	{
-		if(content == null || content.trim().length() <= 250){
-			return content;
-		}
-		return content.substring(0, 250).concat(" ...");
-	}	
 }
