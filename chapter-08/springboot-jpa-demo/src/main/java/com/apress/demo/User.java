@@ -6,8 +6,8 @@ package com.apress.demo;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -18,7 +18,9 @@ import javax.persistence.Table;
 @Table(name="USERS")
 public class User
 {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
+	@SequenceGenerator(name="user_id_generator", sequenceName="usseer_id_sequence", initialValue = 4)
+	@GeneratedValue(generator = "user_id_generator")
 	private Integer id;
 	@Column(nullable=false)
 	private String name;

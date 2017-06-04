@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +47,7 @@ public class SpringbootJPADemoApplicationTests
 		assertNotNull(user);
 	}
 	
-	@Test @Ignore
+	@Test
 	public void createUser() {
 		User user = new User(null, "Paul", "paul@gmail.com");
 		User savedUser = userRepository.save(user);
