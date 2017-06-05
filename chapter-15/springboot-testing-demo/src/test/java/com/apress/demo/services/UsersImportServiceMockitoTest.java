@@ -1,46 +1,41 @@
-package com.apress.demo;
+package com.apress.demo.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import com.apress.demo.UserImportServiceCommunicationFailure;
-import com.apress.demo.UserService;
-import com.apress.demo.UsersImportResponse;
-import com.apress.demo.UsersImporter;
+import com.apress.demo.exceptions.UserImportServiceCommunicationFailure;
+import com.apress.demo.model.UsersImportResponse;
 
 /**
  * @author Siva
  *
  */
-public class SpringMockitoTests
+@RunWith(MockitoJUnitRunner.class)
+public class UsersImportServiceMockitoTest
 {
-	@InjectMocks
-    private UserService userService;
 
     @Mock
     private UsersImporter usersImporter;
-    
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
-    }
+
+    @InjectMocks
+    private UsersImportService usersImportService;
     
     @Test
     public void testUsersImport()
 	{
-    	UsersImportResponse response = userService.importUsers();
+    	UsersImportResponse response = usersImportService.importUsers();
     	System.err.println(response);
     	assertEquals(0, response.getRetryCount());
     	assertEquals("SUCCESS", response.getStatus());
     	
     	when(usersImporter.importUsers()).thenThrow(new UserImportServiceCommunicationFailure());
-    	response = userService.importUsers();
+    	response = usersImportService.importUsers();
     	System.err.println(response);
     	assertEquals(3, response.getRetryCount());
     	assertEquals("FAILURE", response.getStatus());

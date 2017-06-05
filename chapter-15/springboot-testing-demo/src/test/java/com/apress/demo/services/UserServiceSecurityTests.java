@@ -1,4 +1,8 @@
-package com.apress.demo;
+package com.apress.demo.services;
+
+import static org.junit.Assert.*;
+
+import java.util.Optional;
 
 import org.junit.After;
 import org.junit.Before;
@@ -17,28 +21,20 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.apress.demo.SpringbootTestingDemoApplication;
-import com.apress.demo.User;
-import com.apress.demo.UserRepository;
-import com.apress.demo.UserService;
-
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import com.apress.demo.entities.User;
+import com.apress.demo.services.UserService;
 
 /**
  * @author Siva
  *
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringbootTestingDemoApplication.class, webEnvironment=WebEnvironment.RANDOM_PORT)
-public class SpringbootTestingDemoApplicationTests
+@SpringBootTest(classes = SpringbootTestingDemoApplication.class, 
+				webEnvironment=WebEnvironment.RANDOM_PORT)
+public class UserServiceSecurityTests
 {
 	@Autowired
 	private UserService userService;
-	
-	@Autowired
-	private UserRepository userRepository;
 	
 	@Autowired
 	private ApplicationContext context;
@@ -61,10 +57,9 @@ public class SpringbootTestingDemoApplicationTests
 	}
 	
 	@Test
-	public void testGetUsers() {
-		List<User> users = userRepository.findAll();
-		assertNotNull(users);
-		assertEquals(3, users.size());
+	public void testGetUserById() {
+		Optional<User> user = userService.findUserById(1);
+		assertTrue(user.isPresent());
 	}
 	
 	@Test(expected = AuthenticationCredentialsNotFoundException.class)
@@ -92,7 +87,7 @@ public class SpringbootTestingDemoApplicationTests
 	@Test
 	@WithMockUser
 	public void updateUserWithMockUser() {
-		User user = userRepository.findById(1).get();
+		User user = userService.findUserById(1).get();
 		user.setName("Yo");
 		userService.updateUser(user);
 	}

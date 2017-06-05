@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.apress.demo;
+package com.apress.demo.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class User
 {
 	@Id 
-	@SequenceGenerator(name="user_id_generator", sequenceName="usseer_id_sequence", initialValue = 4)
+	@SequenceGenerator(name="user_id_generator", sequenceName="user_id_sequence", initialValue = 4)
 	@GeneratedValue(generator = "user_id_generator")
 	private Integer id;
 	
