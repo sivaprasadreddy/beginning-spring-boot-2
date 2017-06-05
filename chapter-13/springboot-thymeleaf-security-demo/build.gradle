@@ -27,13 +27,14 @@ repositories {
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-devtools')
-	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	runtime('com.h2database:h2')
-	runtime('mysql:mysql-connector-java')
-	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile "org.springframework.boot:spring-boot-starter-web"
+	compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+	compile "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect"
+	compile "org.springframework.boot:spring-boot-starter-security"
+	compile "org.thymeleaf.extras:thymeleaf-extras-springsecurity4"
+	compile "org.springframework.boot:spring-boot-starter-data-jpa"
+	testCompile "org.springframework.boot:spring-boot-starter-test"
+	compile "org.springframework.boot:spring-boot-devtools"
+	compile "com.h2database:h2"
+	compile "mysql:mysql-connector-java"
 }
