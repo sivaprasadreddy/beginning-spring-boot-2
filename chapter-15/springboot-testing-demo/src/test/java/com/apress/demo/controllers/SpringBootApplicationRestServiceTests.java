@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +47,7 @@ public class SpringBootApplicationRestServiceTests
 		assertTrue(resp.contains("Up & Running"));
 	}
 	
-	@Test @Ignore
+	@Test //@Ignore
 	public void testGetUsers()
 	{
 		ResponseEntity<String> responseEntity = restTemplate.withBasicAuth("admin","admin123")

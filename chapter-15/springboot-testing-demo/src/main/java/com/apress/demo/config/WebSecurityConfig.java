@@ -28,6 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/api/todos/list").permitAll();
+		http.authorizeRequests()
+			.antMatchers("/api/todos/**").permitAll()
+		;
 	}
+	
 }

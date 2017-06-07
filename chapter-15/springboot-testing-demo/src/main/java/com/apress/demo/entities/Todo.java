@@ -23,6 +23,15 @@ public class Todo {
 	private String text;
 	private boolean done;
 	
+	public Todo() {
+	}
+	
+	public Todo(int id, String text, boolean done) {
+		this.id = id;
+		this.text = text;
+		this.done = done;
+	}
+
 	public int getId() {
 		return id;
 	}
