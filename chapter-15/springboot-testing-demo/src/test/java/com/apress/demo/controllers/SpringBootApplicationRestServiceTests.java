@@ -44,7 +44,7 @@ public class SpringBootApplicationRestServiceTests
 	{
 		String resp = restTemplate.withBasicAuth("admin","admin123")
 				.getForObject("/ping", String.class);
-		assertTrue(resp.contains("Up & Running"));
+		assertTrue(resp.equals("OK"));
 	}
 	
 	@Test //@Ignore

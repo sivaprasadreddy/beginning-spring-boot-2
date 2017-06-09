@@ -4,7 +4,7 @@
 package com.apress.demo.controllers;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -45,7 +45,7 @@ public class TodoRestControllerTests {
     	todo.setId(1);
     	todo.setText("Todo1");
     	todo.setDone(false);
-        when(this.todoRepository.findById(1)).thenReturn(Optional.of(todo));
+        given(this.todoRepository.findById(1)).willReturn(Optional.of(todo));
         this.mvc.perform(get("/api/todos/1")
         		//.with(user("admin").password("admin123").roles("USER","ADMIN"))
         		.accept(MediaType.APPLICATION_JSON))

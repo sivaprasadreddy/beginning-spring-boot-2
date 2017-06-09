@@ -3,11 +3,9 @@
  */
 package com.apress.demo.controllers;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import static org.hamcrest.Matchers.*;
 
@@ -45,7 +43,7 @@ public class TodoControllerTests {
     	Todo todo1 = new Todo(1, "Todo1",false);
     	Todo todo2 = new Todo(2, "Todo2",true);
     	
-    	when(this.todoRepository.findAll()).thenReturn(Arrays.asList(todo1, todo2));
+    	given(this.todoRepository.findAll()).willReturn(Arrays.asList(todo1, todo2));
         this.mvc.perform(get("/todolist")
         		//.with(user("admin").password("admin123").roles("USER","ADMIN"))
         		.accept(MediaType.TEXT_HTML))
