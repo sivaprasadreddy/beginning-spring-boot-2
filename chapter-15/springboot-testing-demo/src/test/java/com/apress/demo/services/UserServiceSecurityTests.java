@@ -20,7 +20,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.apress.demo.SpringbootTestingDemoApplication;
 import com.apress.demo.entities.User;
 import com.apress.demo.services.UserService;
 
@@ -29,8 +28,7 @@ import com.apress.demo.services.UserService;
  *
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringbootTestingDemoApplication.class, 
-				webEnvironment=WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 public class UserServiceSecurityTests
 {
 	@Autowired
@@ -43,12 +41,9 @@ public class UserServiceSecurityTests
 	
 	@Before
 	public void init() {
-		AuthenticationManager authenticationManager = this.context
-				.getBean(AuthenticationManager.class);
+		AuthenticationManager authenticationManager = this.context.getBean(AuthenticationManager.class);
 		this.authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken("admin", "admin123")
-				//new UsernamePasswordAuthenticationToken("user", "password")
-				);
+				new UsernamePasswordAuthenticationToken("admin", "admin123"));
 	}
 
 	@After
@@ -84,6 +79,20 @@ public class UserServiceSecurityTests
 		userService.createUser(user);
 	}
 	
+	/*
+	@Test
+	@WithUserDetails
+	public void createUserWithUserDetails()
+	{
+		User user = new User();
+		user.setName("Yosin");
+		user.setEmail("yosin@gmail.com");
+		user.setPassword("yosin123");
+		
+		userService.createUser(user);
+	}
+	*/
+	
 	@Test
 	@WithMockUser
 	public void updateUserWithMockUser() {
@@ -94,7 +103,6 @@ public class UserServiceSecurityTests
 	
 	@Test
 	@WithMockUser(username="admin",roles={"USER","ADMIN"})
-	//@WithUserDetails(value="admin")
 	public void deleteUserAuthenticatedWithMockUser() {
 		userService.deleteUser(2);
 	}

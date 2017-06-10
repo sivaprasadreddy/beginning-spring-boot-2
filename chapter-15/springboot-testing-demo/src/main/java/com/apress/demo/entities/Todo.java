@@ -19,23 +19,28 @@ public class Todo {
 	@Id 
 	@SequenceGenerator(name="todo_id_generator", sequenceName="todo_id_sequence", initialValue = 3)
 	@GeneratedValue(generator = "todo_id_generator")
-	private int id;
+	private Integer id;
 	private String text;
 	private boolean done;
 	
 	public Todo() {
 	}
 	
-	public Todo(int id, String text, boolean done) {
+	public Todo(Integer id, String text, boolean done) {
 		this.id = id;
 		this.text = text;
 		this.done = done;
 	}
 
-	public int getId() {
+	@Override
+	public String toString() {
+		return "Todo [id=" + id + ", text=" + text + ", done=" + done + "]";
+	}
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getText() {

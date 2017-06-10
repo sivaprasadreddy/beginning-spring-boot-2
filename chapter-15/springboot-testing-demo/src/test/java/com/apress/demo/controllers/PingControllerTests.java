@@ -27,9 +27,12 @@ public class PingControllerTests {
 	TestRestTemplate restTemplate;
 	
 	@Test
-	public void testPing()
+	public void testPing() throws Exception
 	{
-		ResponseEntity<String> respEntity = restTemplate.getForEntity("/ping", String.class);
+		ResponseEntity<String> respEntity = 
+				restTemplate
+				.withBasicAuth("admin", "admin123")
+				.getForEntity("/ping", String.class);
 		assertThat(respEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(respEntity.getBody()).isEqualTo("OK");
 	}

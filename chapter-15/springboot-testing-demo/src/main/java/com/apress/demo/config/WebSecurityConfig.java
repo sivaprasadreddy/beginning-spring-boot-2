@@ -13,9 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled=true, proxyTargetClass=true)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter 
+{
 	@Autowired
 	protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
 	{
@@ -23,14 +23,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 	.inMemoryAuthentication()
 	 			.withUser("user").password("password").roles("USER").and()
 	 			.withUser("admin").password("admin123").roles("USER", "ADMIN");
-
 	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/api/todos/**").permitAll()
+			.antMatchers("/api/todos/**").hasRole("USER")
+			.antMatchers("/admin/**").hasRole("ADMIN")
+			.antMatchers("/ping").hasAnyRole("USER","ADMIN")
+			.anyRequest().authenticated()
 		;
 	}
-	
 }

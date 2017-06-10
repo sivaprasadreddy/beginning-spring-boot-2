@@ -40,5 +40,4 @@ public class TodoRestController {
 	public Todo createTodo(@RequestBody Todo todo){
 		return todoRepository.save(todo);
 	}
-	
 }

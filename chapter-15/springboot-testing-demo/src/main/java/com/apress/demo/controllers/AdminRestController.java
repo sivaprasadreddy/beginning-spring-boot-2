@@ -23,5 +23,6 @@ public class AdminRestController
 	public void deleteUser(@PathVariable("id") Integer userId)
 	{
 		userService.deleteUser(userId);
+		System.err.println("User deleted");
 	}
 }
