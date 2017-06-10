@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 		http.authorizeRequests()
 			.antMatchers("/api/todos/**").hasRole("USER")
 			.antMatchers("/admin/**").hasRole("ADMIN")
-			.antMatchers("/ping").hasAnyRole("USER","ADMIN")
+			.antMatchers("/ping").permitAll()
 			.anyRequest().authenticated()
 		;
 	}
