@@ -22,7 +22,7 @@
     </appender>
 -->
 
-    <logger name="com.sivalabs.jhblog" level="#logback.loglevel#"/>
+    <logger name="com.apress.jhblog" level="#logback.loglevel#"/>
 
     <logger name="io.github.jhipster" level="DEBUG"/>
 

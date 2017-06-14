@@ -1,12 +1,12 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.sivalabs.jhblog"
+      "packageName": "com.apress.jhblog"
     },
     "jhipsterVersion": "4.5.2",
     "baseName": "jhipsterblog",
-    "packageName": "com.sivalabs.jhblog",
-    "packageFolder": "com/sivalabs/jhblog",
+    "packageName": "com.apress.jhblog",
+    "packageFolder": "com/apress/jhblog",
     "serverPort": "8080",
     "authenticationType": "jwt",
     "hibernateCache": "ehcache",
@@ -20,7 +20,7 @@
     "serviceDiscoveryType": false,
     "buildTool": "maven",
     "enableSocialSignIn": false,
-    "jwtSecretKey": "4f1cd0c3adc370ac6e8c9cd0ababb0db54308b36",
+    "jwtSecretKey": "2f0b549e68ab248db79cc8d9f6b2b2399cdd8928",
     "clientFramework": "angular2",
     "useSass": false,
     "clientPackageManager": "yarn",
