@@ -108,10 +108,11 @@ if (project.hasProperty('prometheus')) {
     apply from: 'gradle/prometheus.gradle'
 }
 
-group = 'com.apress.jhblog'
+//group = 'com.apress.jhblog'
+//artifact = 'jhipsterblog'
 version = '0.0.1-SNAPSHOT'
 
-description = ''
+//description = ''
 
 configurations {
     providedRuntime
