@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sivalabs.spring.boot.autoconfigure;
+package com.apress.spring.boot.autoconfigure;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

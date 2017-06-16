@@ -1,15 +1,15 @@
 /**
  * 
  */
-package com.sivalabs.spring.boot.autoconfigure;
+package com.apress.spring.boot.autoconfigure;
 
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.boot.autoconfigure.PropertyPlaceholderAutoConfiguration;
-import org.springframework.boot.test.EnvironmentTestUtils;
+import org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration;
+import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import twitter4j.Twitter;
@@ -36,13 +36,12 @@ public class Twitter4jAutoConfigurationTest {
 	
 	@Test
 	public void testWithTwitter4jProperties(){
-				
-		EnvironmentTestUtils.addEnvironment(this.context,
-				"twitter4j.oauth.consumer-key:consumer-key-value-here",
+		TestPropertyValues.of("twitter4j.oauth.consumer-key:consumer-key-value-here",
 				"twitter4j.oauth.consumer-secret:consumer-secret-value-here",
 				"twitter4j.oauth.access-token:access-token-value-here",
-				"twitter4j.oauth.access-token-secret:access-token-secret-value-here"
-				);
+				"twitter4j.oauth.access-token-secret:access-token-secret-value-here")
+				.applyTo(this.context);
+
 		this.context.register(
 							  PropertyPlaceholderAutoConfiguration.class,
 							  Twitter4jAutoConfiguration.class

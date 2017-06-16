@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sivalabs.spring.boot.autoconfigure;
+package com.apress.spring.boot.autoconfigure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
