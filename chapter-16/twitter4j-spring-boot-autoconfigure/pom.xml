@@ -12,7 +12,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<twitter4j.version>4.0.3</twitter4j.version>
+		<twitter4j.version>4.0.4</twitter4j.version>
 		<spring-boot.version>2.0.0.BUILD-SNAPSHOT</spring-boot.version>
 	</properties>
 
@@ -47,6 +47,7 @@
 			<groupId>org.twitter4j</groupId>
 			<artifactId>twitter4j-core</artifactId>
 			<version>${twitter4j.version}</version>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
