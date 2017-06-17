@@ -16,6 +16,8 @@ import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
+import static org.springframework.util.StringUtils.isEmpty;
+
 /**
  * @author Siva
  *
@@ -34,10 +36,10 @@ public class Twitter4jAutoConfiguration {
 	@ConditionalOnMissingBean
 	public TwitterFactory twitterFactory(){
 		
-		if (this.properties.getOauth().getConsumerKey() == null
-			|| this.properties.getOauth().getConsumerSecret() == null
-			|| this.properties.getOauth().getAccessToken() == null
-			|| this.properties.getOauth().getAccessTokenSecret() == null) 
+		if (isEmpty(this.properties.getOauth().getConsumerKey())
+			|| isEmpty(this.properties.getOauth().getConsumerSecret())
+			|| isEmpty(this.properties.getOauth().getAccessToken())
+			|| isEmpty(this.properties.getOauth().getAccessTokenSecret()))
 		{
 			log.error("Twitter4j properties not configured properly. Please check twitter4j.* properties settings in configuration file.");
 			throw new RuntimeException("Twitter4j properties not configured properly. Please check twitter4j.* properties settings in configuration file.");
