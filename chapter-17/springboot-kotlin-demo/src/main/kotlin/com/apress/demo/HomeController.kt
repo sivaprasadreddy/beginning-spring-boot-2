@@ -13,6 +13,4 @@ class HomeController(val repository:UserRepository) {
         model.addAttribute("users", repository.findAll())
         return "home"
     }
-
-
 }
