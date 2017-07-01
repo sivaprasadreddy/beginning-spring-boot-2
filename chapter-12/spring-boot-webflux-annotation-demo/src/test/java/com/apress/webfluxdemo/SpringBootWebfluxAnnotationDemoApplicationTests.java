@@ -3,6 +3,7 @@ package com.apress.webfluxdemo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -15,6 +16,9 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 public class SpringBootWebfluxAnnotationDemoApplicationTests {
 
+	@Value("${sample.users.count}")
+	private int sampleUserCount;
+
 	@Autowired
 	private WebTestClient webTestClient;
 
@@ -24,7 +28,7 @@ public class SpringBootWebfluxAnnotationDemoApplicationTests {
 				.expectStatus().isOk()
 				.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
 				.expectBodyList(User.class)
-				.consumeWith(result -> assertEquals(1000, result.getResponseBody().size()));
+				.consumeWith(result -> assertEquals(sampleUserCount, result.getResponseBody().size()));
 	}
 
 }
