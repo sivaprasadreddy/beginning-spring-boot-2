@@ -11,6 +11,8 @@
 
     <modules>
         <module>springboot-webflux-demo</module>
+        <module>spring-boot-webflux-annotation-demo</module>
+        <module>spring-boot-webflux-functional-demo</module>
     </modules>
 
 </project>
