@@ -8,16 +8,15 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.web.reactive.function.BodyInserters.fromObject;
 
 
 @Component
-public class UserHandlerFunctions {
+public class UserHandler {
     private UserReactiveRepository userReactiveRepository;
 
     @Autowired
-    public UserHandlerFunctions(UserReactiveRepository userReactiveRepository) {
+    public UserHandler(UserReactiveRepository userReactiveRepository) {
         this.userReactiveRepository = userReactiveRepository;
     }
 
@@ -42,9 +41,8 @@ public class UserHandlerFunctions {
     public Mono<ServerResponse> saveUser(ServerRequest request)
     {
         Mono<User> userMono = request.bodyToMono(User.class);
-        userMono.flatMap(user -> userReactiveRepository.save(user)).subscribe();
-        return ServerResponse.ok().build();
-
+        Mono<User> mono = userMono.flatMap(user -> userReactiveRepository.save(user));
+        return ServerResponse.ok().body(mono, User.class);
     }
 
     public Mono<ServerResponse> deleteUser(ServerRequest request)

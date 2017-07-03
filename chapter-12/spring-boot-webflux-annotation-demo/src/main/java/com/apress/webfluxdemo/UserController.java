@@ -23,8 +23,14 @@ public class UserController
     }
 
     @PostMapping
-    public Mono<User> save(@RequestBody User user) {
-       return userReactiveRepository.save(user);
+    public Mono<User> saveUser(@RequestBody Mono<User> userMono) {
+        //the following does NOT work
+        //userMono.flatMap(user -> userReactiveRepository.save(user));
+
+        //the following works
+        //userMono.flatMap(user -> userReactiveRepository.save(user)).subscribe();
+
+        return userMono.flatMap(user -> userReactiveRepository.save(user));
     }
 
     @DeleteMapping("/{id}")

@@ -23,7 +23,7 @@ public class SampleDataPopulator implements CommandLineRunner
     @Override
     public void run(String... strings) throws Exception {
         Faker faker = new Faker(new Locale("EN"));
-        userReactiveRepository.deleteAll();
+        userReactiveRepository.deleteAll().subscribe();
         List<User> users = new ArrayList<>();
         for (int i=1; i<=sampleUserCount; i++)
         {
