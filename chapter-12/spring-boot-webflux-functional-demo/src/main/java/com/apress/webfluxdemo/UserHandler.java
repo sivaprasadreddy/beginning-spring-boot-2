@@ -5,8 +5,13 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import org.thymeleaf.spring5.context.webflux.ReactiveDataDriverContextVariable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.springframework.web.reactive.function.BodyInserters.fromObject;
 
@@ -49,5 +54,22 @@ public class UserHandler {
     {
        String id = request.pathVariable("id");
         return ServerResponse.ok().build(userReactiveRepository.deleteById(id));
+    }
+
+    public Mono<ServerResponse> listUsers(ServerRequest request)
+    {
+        List<User> userList = userReactiveRepository.findAll().repeat(30000).collectList().block();
+        Map<String,Object> data = new HashMap<>();
+        data.put("users", userList);
+        return ServerResponse.ok().contentType(MediaType.TEXT_HTML).render("users", data);
+    }
+
+    public Mono<ServerResponse> listUsersReactive(ServerRequest request)
+    {
+        Flux<User> userFlux = userReactiveRepository.findAll().repeat(30000);
+        ReactiveDataDriverContextVariable users = new ReactiveDataDriverContextVariable(userFlux, 1000);
+        Map<String,Object> data = new HashMap<>();
+        data.put("users", users);
+        return ServerResponse.ok().contentType(MediaType.TEXT_HTML).render("users", data);
     }
 }

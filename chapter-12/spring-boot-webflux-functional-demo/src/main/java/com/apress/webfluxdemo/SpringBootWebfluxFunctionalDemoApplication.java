@@ -5,12 +5,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.server.*;
 import reactor.core.publisher.Mono;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.http.MediaType.TEXT_HTML;
 import static org.springframework.web.reactive.function.BodyInserters.fromObject;
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.springframework.web.reactive.function.server.RouterFunctions.nest;
@@ -39,8 +41,23 @@ public class SpringBootWebfluxFunctionalDemoApplication {
 	}
 
 	@Bean
+	public RouterFunction<ServerResponse> indexRouterFunction() {
+		return route(GET("/"), request -> ok().contentType(TEXT_HTML).render("index"));
+	}
+
+	@Bean
 	public RouterFunction<ServerResponse> echoRouterFunction() {
 		return route(GET("/echo"), request -> ok().body(fromObject(request.queryParam("name"))));
+	}
+
+	@Bean
+	public RouterFunction<ServerResponse> listUsersRouter() {
+		return route(GET("/list-users"), userHandler::listUsers);
+	}
+
+	@Bean
+	public RouterFunction<ServerResponse> listUsersReactiveRouter() {
+		return route(GET("/list-users-reactive"), userHandler::listUsersReactive);
 	}
 
 }
