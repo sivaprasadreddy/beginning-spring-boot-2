@@ -64,6 +64,14 @@ public class UserHandler {
         return ServerResponse.ok().contentType(MediaType.TEXT_HTML).render("users", data);
     }
 
+    public Mono<ServerResponse> listUsersChunked(ServerRequest request)
+    {
+        Flux<User> userFlux  = userReactiveRepository.findAll().repeat(30000);
+        Map<String,Object> data = new HashMap<>();
+        data.put("users", userFlux);
+        return ServerResponse.ok().contentType(MediaType.TEXT_HTML).render("users", data);
+    }
+
     public Mono<ServerResponse> listUsersReactive(ServerRequest request)
     {
         Flux<User> userFlux = userReactiveRepository.findAll().repeat(30000);

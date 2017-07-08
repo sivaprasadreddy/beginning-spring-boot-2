@@ -56,10 +56,14 @@ public class SpringBootWebfluxFunctionalDemoApplication {
 	}
 
 	@Bean
+	public RouterFunction<ServerResponse> listUsersChunkedRouter() {
+		return route(GET("/list-users-chunked"), userHandler::listUsersChunked);
+	}
+
+	@Bean
 	public RouterFunction<ServerResponse> listUsersReactiveRouter() {
 		return route(GET("/list-users-reactive"), userHandler::listUsersReactive);
 	}
-
 }
 
 @RestController
