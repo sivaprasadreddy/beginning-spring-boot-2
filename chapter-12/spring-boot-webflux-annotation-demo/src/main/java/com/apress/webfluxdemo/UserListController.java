@@ -29,6 +29,14 @@ public class UserListController {
         return "users";
     }
 
+    @GetMapping("/list-users-chunked")
+    public String listUsersChunked(Model model){
+
+        Flux<User> userFlux = this.userReactiveRepository.findAll().repeat(30000);
+        model.addAttribute("users", userFlux);
+        return "users";
+    }
+
     @GetMapping("/list-users-reactive")
     public String listUsersReactive(Model model){
 
