@@ -16,9 +16,6 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 public class SpringBootWebfluxAnnotationDemoApplicationTests {
 
-	@Value("${sample.users.count}")
-	private int sampleUserCount;
-
 	@Autowired
 	private WebTestClient webTestClient;
 
@@ -28,7 +25,7 @@ public class SpringBootWebfluxAnnotationDemoApplicationTests {
 				.expectStatus().isOk()
 				.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
 				.expectBodyList(User.class)
-				.consumeWith(result -> assertEquals(sampleUserCount, result.getResponseBody().size()));
+				.consumeWith(result -> assertEquals(5, result.getResponseBody().size()));
 	}
 
 }

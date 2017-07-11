@@ -41,10 +41,10 @@ public class SpringBootWebfluxFunctionalDemoApplicationTests {
     public void getAllUsersClient() {
         WebClient webClient = WebClient.create("http://localhost:"+port);
         List<User> users = webClient.get()
-                .uri("/api/users")
+                .uri("/api/users/")
                 .accept(APPLICATION_JSON)
                 .exchange()
-                .flatMap(response -> response.bodyToFlux(User.class).collectList()).block(Duration.ofSeconds(10));
+                .flatMap(response -> response.bodyToFlux(User.class).collectList()).block(Duration.ofSeconds(100));
 
         assertNotNull(users);
         //assertEquals(sampleUserCount, users.size());
@@ -52,7 +52,7 @@ public class SpringBootWebfluxFunctionalDemoApplicationTests {
 
 	@Test
 	public void getAllUsers() {
-		webTestClient.get().uri("/api/users").accept(APPLICATION_JSON).exchange()
+		webTestClient.get().uri("/api/users/").accept(APPLICATION_JSON).exchange()
 				.expectStatus().isOk()
 				.expectHeader().contentType(APPLICATION_JSON_UTF8)
 				.expectBodyList(User.class)
@@ -62,7 +62,7 @@ public class SpringBootWebfluxFunctionalDemoApplicationTests {
     @Test
     public void createUser() {
         User user = new User(UUID.randomUUID().toString(), "Zinx", "zinx@gmail.com");
-        webTestClient.post().uri("/api/users")
+        webTestClient.post().uri("/api/users/")
                 .body(Mono.just(user), User.class)
                 .exchange()
                 .expectStatus().isOk()
