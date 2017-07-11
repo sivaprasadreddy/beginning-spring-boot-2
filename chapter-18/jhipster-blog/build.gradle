@@ -33,7 +33,7 @@ apply plugin: 'io.spring.dependency-management'
 defaultTasks 'bootRun'
 
 bootRepackage {
-   mainClass = 'com.sivalabs.jhblog.TempApp'
+   mainClass = 'com.apress.jhblog.JhipsterblogApp'
 }
 
 war {
