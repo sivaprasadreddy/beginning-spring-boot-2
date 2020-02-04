@@ -40,7 +40,7 @@ import com.apress.demo.repositories.TodoRepository;
  *
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers= TodoRestController.class, secure=false)
+@WebMvcTest(controllers= TodoRestController.class)
 @ContextConfiguration(classes={SpringbootTestingDemoApplication.class, WebSecurityConfig.class})
 public class TodoRestControllerTests {
 

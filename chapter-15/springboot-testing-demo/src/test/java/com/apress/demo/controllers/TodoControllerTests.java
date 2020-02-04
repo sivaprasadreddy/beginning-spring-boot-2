@@ -4,6 +4,7 @@
 package com.apress.demo.controllers;
 
 import static org.mockito.BDDMockito.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -29,7 +30,7 @@ import com.apress.demo.repositories.TodoRepository;
  *
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers= TodoController.class, secure=false)
+@WebMvcTest(controllers= TodoController.class)
 public class TodoControllerTests {
 
 	@Autowired
@@ -45,7 +46,7 @@ public class TodoControllerTests {
     	
     	given(this.todoRepository.findAll()).willReturn(Arrays.asList(todo1, todo2));
         this.mvc.perform(get("/todolist")
-        		//.with(user("admin").password("admin123").roles("USER","ADMIN"))
+        		.with(user("admin").password("admin123").roles("USER","ADMIN"))
         		.accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
                 .andExpect(view().name("todos"))

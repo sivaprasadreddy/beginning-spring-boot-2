@@ -45,7 +45,7 @@ public class SpringbootDataRestDemoApplicationTest
     {
     	mockMvc.perform(get("/api/users"))
         .andExpect(status().isOk())
-        .andExpect(content().contentType(MediaType.parseMediaType("application/hal+json;charset=UTF-8")))
+        .andExpect(content().contentType(MediaType.parseMediaType("application/hal+json")))
         .andExpect(jsonPath("$._embedded.users", hasSize(3)))
         ;
     }

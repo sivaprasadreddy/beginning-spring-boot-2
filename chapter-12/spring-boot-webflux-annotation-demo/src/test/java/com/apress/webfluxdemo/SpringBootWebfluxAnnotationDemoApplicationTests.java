@@ -3,7 +3,6 @@ package com.apress.webfluxdemo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -23,7 +22,7 @@ public class SpringBootWebfluxAnnotationDemoApplicationTests {
 	public void getAllUsers() {
 		webTestClient.get().uri("/api/users").accept(MediaType.APPLICATION_JSON).exchange()
 				.expectStatus().isOk()
-				.expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
+				.expectHeader().contentType(MediaType.APPLICATION_JSON)
 				.expectBodyList(User.class)
 				.consumeWith(result -> assertEquals(5, result.getResponseBody().size()));
 	}

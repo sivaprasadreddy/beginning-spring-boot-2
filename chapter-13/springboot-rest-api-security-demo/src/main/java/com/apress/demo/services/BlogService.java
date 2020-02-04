@@ -30,7 +30,7 @@ public class BlogService
 	PostRepository postRepository;
 
 	public Page<Post> findPosts(PostsRequestDTO postsRequest) {
-		Sort sort = new Sort(Direction.DESC, "createdOn");
+		Sort sort = Sort.by(Direction.DESC, "createdOn");
 		if (postsRequest.getPageNo() < 0) {
 			postsRequest.setPageNo(0);
 		}

@@ -58,7 +58,7 @@ public class SpringbootJPADemoApplicationTests
 	
 	@Test
 	public void getUsersSortByName() {
-		Sort sort = new Sort(Direction.ASC, "name");
+		Sort sort = Sort.by(Direction.ASC, "name");
 		List<User> users = userRepository.findAll(sort);
 		assertNotNull(users);
 	}
@@ -74,7 +74,7 @@ public class SpringbootJPADemoApplicationTests
 	
 	@Test
 	public void getUsersByPage() {
-		Sort sort = new Sort(Direction.ASC, "name");
+		Sort sort = Sort.by(Direction.ASC, "name");
 		int size = 25;
 		int page = 0; //zero-based page index.
 		Pageable pageable = PageRequest.of(page, size, sort);

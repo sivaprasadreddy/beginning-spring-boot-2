@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.BUILD-SNAPSHOT</version>
+		<version>2.2.4.RELEASE</version>
 		<relativePath/>
 	</parent>
 
@@ -97,7 +97,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jooq</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.jooq</groupId>
+			<artifactId>jooq-codegen</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -113,7 +116,9 @@
 	<profiles>
 		<profile>
 			<id>h2</id>
-
+			<activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
 			<build>
 				<plugins>
 					<plugin>
@@ -167,9 +172,9 @@
 								<url>jdbc:h2:~/springbootjooq</url>
 							</jdbc>
 							<generator>
-								<name>org.jooq.util.DefaultGenerator</name>
+								<name>org.jooq.codegen.JavaGenerator</name>
 								<database>
-									<name>org.jooq.util.h2.H2Database</name>
+									<name>org.jooq.meta.h2.H2Database</name>
 									<includes>.*</includes>
 									<excludes />
 									<inputSchema>PUBLIC</inputSchema>
@@ -244,9 +249,9 @@
 								<password>admin</password>
 							</jdbc>
 							<generator>
-								<name>org.jooq.util.DefaultGenerator</name>
+								<name>org.jooq.codegen.JavaGenerator</name>
 								<database>
-									<name>org.jooq.util.mysql.MySQLDatabase</name>
+									<name>org.jooq.meta.mysql.MySQLDatabase</name>
 									<includes>.*</includes>
 									<excludes />
 									<inputSchema>test</inputSchema>

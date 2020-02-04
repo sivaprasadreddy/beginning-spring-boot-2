@@ -37,11 +37,14 @@ public class UserServiceSecurityTests
 	@Autowired
 	private ApplicationContext context;
 
+	@Autowired
+	AuthenticationManager authenticationManager;
+
 	private Authentication authentication;
 	
 	@Before
 	public void init() {
-		AuthenticationManager authenticationManager = this.context.getBean(AuthenticationManager.class);
+		//AuthenticationManager authenticationManager = this.context.getBean(AuthenticationManager.class);
 		this.authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken("admin", "admin123"));
 	}

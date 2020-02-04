@@ -66,7 +66,7 @@ public class SpringBootWebfluxFunctionalDemoApplicationTests {
                 .body(Mono.just(user), User.class)
                 .exchange()
                 .expectStatus().isOk()
-                .expectHeader().contentType(APPLICATION_JSON_UTF8)
+                .expectHeader().contentType(APPLICATION_JSON)
                 .expectBody(User.class)
                 .consumeWith(result -> assertThat(result.getResponseBody()).isEqualToComparingFieldByField(user));
     }

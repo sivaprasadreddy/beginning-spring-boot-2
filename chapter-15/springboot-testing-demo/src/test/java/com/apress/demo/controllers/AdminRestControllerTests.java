@@ -28,7 +28,7 @@ import com.apress.demo.services.UserService;
  *
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers= AdminRestController.class, secure=false)
+@WebMvcTest(controllers= AdminRestController.class)
 @ContextConfiguration(classes={SpringbootTestingDemoApplication.class, WebSecurityConfig.class})
 public class AdminRestControllerTests
 {
