@@ -7,15 +7,13 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.apress.demo.SpringbootTestingDemoApplication;
@@ -27,7 +25,6 @@ import com.apress.demo.services.UserService;
  * @author Siva
  *
  */
-@RunWith(SpringRunner.class)
 @WebMvcTest(controllers= AdminRestController.class)
 @ContextConfiguration(classes={SpringbootTestingDemoApplication.class, WebSecurityConfig.class})
 public class AdminRestControllerTests

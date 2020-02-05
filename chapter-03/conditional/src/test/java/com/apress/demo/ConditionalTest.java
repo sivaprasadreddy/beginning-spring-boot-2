@@ -9,9 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.apress.demo.AppConfig;
-import com.apress.demo.UserDAO;
-
 import java.util.List;
 
 /**

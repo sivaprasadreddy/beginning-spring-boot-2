@@ -28,12 +28,11 @@ repositories {
 
 
 dependencies {
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	runtime('org.springframework.boot:spring-boot-devtools')
-	compile('org.springframework.boot:spring-boot-starter-jdbc'){
-		exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	compile('com.zaxxer:HikariCP')
+	runtime('org.springframework.boot:spring-boot-devtools')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	runtime('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
 }

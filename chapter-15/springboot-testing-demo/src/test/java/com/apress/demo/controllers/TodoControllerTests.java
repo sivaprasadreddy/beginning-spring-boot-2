@@ -12,13 +12,11 @@ import static org.hamcrest.Matchers.*;
 
 import java.util.Arrays;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.apress.demo.entities.Todo;
@@ -29,7 +27,6 @@ import com.apress.demo.repositories.TodoRepository;
  * @author Siva
  *
  */
-@RunWith(SpringRunner.class)
 @WebMvcTest(controllers= TodoController.class)
 public class TodoControllerTests {
 

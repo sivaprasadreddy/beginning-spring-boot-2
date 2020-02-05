@@ -1,13 +1,11 @@
 package com.apress.demo.services;
 
-import static org.junit.Assert.*;
 
 import java.util.Optional;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -18,16 +16,16 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.apress.demo.entities.User;
-import com.apress.demo.services.UserService;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Siva
  *
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 public class UserServiceSecurityTests
 {
@@ -42,14 +40,14 @@ public class UserServiceSecurityTests
 
 	private Authentication authentication;
 	
-	@Before
+	@BeforeEach
 	public void init() {
 		//AuthenticationManager authenticationManager = this.context.getBean(AuthenticationManager.class);
 		this.authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken("admin", "admin123"));
 	}
 
-	@After
+	@AfterEach
 	public void close() {
 		SecurityContextHolder.clearContext();
 	}
@@ -60,9 +58,11 @@ public class UserServiceSecurityTests
 		assertTrue(user.isPresent());
 	}
 	
-	@Test(expected = AuthenticationCredentialsNotFoundException.class)
+	@Test
 	public void deleteUserUnauthenticated() {
-		userService.deleteUser(3);
+		assertThrows(AuthenticationCredentialsNotFoundException.class, () -> {
+			userService.deleteUser(3);
+		});
 	}
 	
 	@Test

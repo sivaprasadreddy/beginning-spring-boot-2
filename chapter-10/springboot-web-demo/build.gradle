@@ -32,5 +32,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('org.webjars:bootstrap:3.3.7')
 	compile('net.bull.javamelody:javamelody-core:1.65.0')
-	testCompile('org.springframework.boot:spring-boot-starter-test') 
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+  }
 }

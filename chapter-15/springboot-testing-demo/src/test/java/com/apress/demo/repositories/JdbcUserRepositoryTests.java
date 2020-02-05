@@ -7,13 +7,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.apress.demo.entities.User;
 
@@ -21,7 +19,6 @@ import com.apress.demo.entities.User;
  * @author Siva
  *
  */
-@RunWith(SpringRunner.class)
 @JdbcTest
 public class JdbcUserRepositoryTests {
 
@@ -30,7 +27,7 @@ public class JdbcUserRepositoryTests {
 
 	private JdbcUserRepository userRepository;
 
-	@Before
+	@BeforeEach
 	public void init() {
 		userRepository = new JdbcUserRepository(jdbcTemplate);
 

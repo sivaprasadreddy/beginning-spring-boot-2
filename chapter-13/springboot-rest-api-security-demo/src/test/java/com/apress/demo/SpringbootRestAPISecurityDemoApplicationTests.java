@@ -3,15 +3,12 @@
  */
 package com.apress.demo;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.apress.demo.SpringbootRestAPISecurityDemoApplication;
 import com.apress.demo.entities.Post;
 import com.apress.demo.rest.model.PostsRequestDTO;
 import com.apress.demo.services.BlogService;
@@ -20,7 +17,6 @@ import com.apress.demo.services.BlogService;
  * @author Siva
  *
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringbootRestAPISecurityDemoApplication.class)
 @WebAppConfiguration
 public class SpringbootRestAPISecurityDemoApplicationTests {
